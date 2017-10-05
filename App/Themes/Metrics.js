@@ -11,6 +11,7 @@ const metrics = {
   doubleBaseMargin: 20,
   smallMargin: 5,
   doubleSection: 50,
+  doubleThreeSection: 150,
   horizontalLineHeight: 1,
   searchBarHeight: 30,
   screenWidth: width < height ? width : height,
@@ -28,7 +29,8 @@ const metrics = {
     small: 20,
     medium: 40,
     large: 60,
-    logo: 200
+    logo: 200,
+    button: 245
   }
 }
 
