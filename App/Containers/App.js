@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
+import AppNavigator from '../Components/AppNavigator'
+
+// import AppNavigator from '../Components/AppNavigator'
 
 // create our store
 const store = createStore()
@@ -17,15 +20,21 @@ const store = createStore()
  *
  * We separate like this to play nice with React Native's hot reloading.
  */
+
+
 class App extends Component {
   render () {
     return (
       <Provider store={store}>
         <RootContainer />
       </Provider>
+
+      
     )
   }
 }
+
+
 
 // allow reactotron overlay for fast design in dev mode
 export default DebugConfig.useReactotron

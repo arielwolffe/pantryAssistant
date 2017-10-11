@@ -1,10 +1,24 @@
 import React, { Component } from 'react'
-import { StackNavigator } from 'react-navigation';
-import LaunchScreen from '../Containers/LaunchScreen'
+import { TabNavigator } from 'react-navigation';
+import GroceryListScreen from '../Containers/GroceryListScreen'
 import PantryScreen from '../Containers/PantryScreen'
+import InventoryScreen from '../Containers/InventoryScreen'
+import MealPlanScreen from '../Containers/MealPlanScreen'
+import { Colors} from '../Themes'
 
 
-export default AppNavigator = StackNavigator({
-    Launch: { screen: LaunchScreen },
-    Pantry: { screen: PantryScreen }
+const AppNavigator = TabNavigator({
+     Pantry: { screen: PantryScreen },
+     Inventory: { screen: InventoryScreen },
+     GroceryList: { screen: GroceryListScreen },
+     MealPlan: { screen: MealPlanScreen },
+    }, {
+      tabBarPosition: 'bottom',
+      animationEnabled: true,
+      tabBarOptions: {
+        activeTintColor: Colors.oceanSpray,
+      },
+    
   });
+
+  export default AppNavigator 

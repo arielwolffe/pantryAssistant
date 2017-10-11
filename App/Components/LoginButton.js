@@ -5,6 +5,7 @@ import { Container, Header, Content, Button, Text } from 'native-base'
 import styles from '../Components/Styles/RoundedButtonStyles'
 import PantryScreen from '../Containers/PantryScreen.js'
 import { Images } from '../Themes'
+import { StackNavigator } from 'react-navigation';
 
 export default class LoginButton extends React.Component {
   constructor (props) {
@@ -13,12 +14,15 @@ export default class LoginButton extends React.Component {
       showModal: false
     }
   }
-
+  // openPantry = () => {
+  //   this.props.navigation.navigate('PantryScreen')
+  // }
   toggleModal = () => {
     this.setState({ showModal: !this.state.showModal })
   }
 
   render () {
+
     if (DebugConfig.showDevScreens) {
       return (
         <View>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View, Container, Header, Content, Form, Item, Input, Label  } from 'react-native'
+// import { ScrollView, Text, Image, View, Container, Header, Content, Form, Item, Input, Label, Button  } from 'react-native'
+import { ScrollView, Image, View } from 'react-native'
+import { Container, Header, Content, Form, Item, Input, Label, Icon, Button, Text } from 'native-base';
 import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js'
 import LoginButton from '../Components/LoginButton'
 import SignupButton from '../Components/SignupButton'
 import LoginForm from '../Components/LoginForm'
-import PantryScreen from './PantryScreen'
-import { StackNavigator } from 'react-navigation';
 import { Images } from '../Themes'
 
 
@@ -13,11 +13,12 @@ import { Images } from '../Themes'
 import styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  };
+  // static navigationOptions = {
+  //   tabBarLabel: 'Launch',
+  //   tabBarVisible: false
+  // };
+
   render () {
-    const { navigate } = this.props.navigation;
     return (
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
@@ -43,6 +44,7 @@ export default class LaunchScreen extends Component {
           
           <LoginForm/>
           <View style={styles.sections} >
+            
               <Text style={styles.subtitle}>
                 Don't have an account? Sign Up here!
               </Text>
@@ -57,7 +59,3 @@ export default class LaunchScreen extends Component {
     )
   }
 }
-export const AppNavigator = StackNavigator({
-  Launch: { screen: LaunchScreen },
-  Pantry: { screen: PantryScreen }
-});

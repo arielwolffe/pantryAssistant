@@ -21,7 +21,11 @@ const images = {
   backButton: require('../Images/Icons/back-button.png'),
   closeButton: require('../Images/Icons/close-button.png'),
   pantryLogo: require('../Images/PantryLogo.png'),
-  facebookLogin: require('../Images/login-facebook.png')
+  facebookLogin: require('../Images/login-facebook.png'),
+  pantryIcon: require('../Images/pantry-icon.png'),
+  inventoryIcon: require('../Images/inventory-icon.png'),
+  groceryListIcon: require('../Images/grocerylist-icon.png'),
+  mealPlanIcon: require('../Images/mealplan-icon.png')
 }
 
 export default images

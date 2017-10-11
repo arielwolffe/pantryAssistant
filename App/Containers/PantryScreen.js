@@ -1,20 +1,127 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View, Container, Header, Content, Form, Item, Input, Label  } from 'react-native'
-import { StackNavigator } from 'react-navigation';
+import { ScrollView, Image, View, Form, Item, Input, Label , ListView } from 'react-native'
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Subtitle, List, ListItem, Content, Text, Badge, Fab} from 'native-base';
+import { StackNavigator, TabNavigator} from 'react-navigation';
 import { Images } from '../Themes'
-import  AppNavigator from '../Components/AppNavigator'
-
 import styles from './Styles/PantryScreenStyles'
+import {Colors} from '../Themes/'
+import GroceryListScreen from '../Containers/GroceryListScreen'
+import InventoryScreen from '../Containers/InventoryScreen'
+//import MealPlanScreen from '../Containers/MealPlanScreen'
 
-export default class PantryScreen extends Component {
+const datas = [
+  'Crix',
+  'Cheese',
+  'Bread',
+  'Butter',
+  'Milk',
+  'Bottles water',
+  'Sausages',
+  'Dog Chow',
+];
+
+ class PantryScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    this.state = {
+      basic: true,
+      listViewData: datas,
+      active: true
+    };
+  }
+  deleteRow(secId, rowId, rowMap) {
+    rowMap[`${secId}${rowId}`].props.closeRow();
+    const newData = [...this.state.listViewData];
+    newData.splice(rowId, 1);
+    this.setState({ listViewData: newData });
+  }
+
   static navigationOptions = {
-    title: 'My Pantry',
+    title : 'My Pantry',
+    tabBarLabel: 'Pantry',
+    tabBarIcon: ({ tintColor }) => (
+      <Image
+        source={Images.pantryIcon}
+        style={[styles.icon, {tintColor: tintColor}]}
+      />
+    ),
   };
+
   render () {
+   
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     return (
-        <View>
-        <Text>Chat with Lucy</Text>
-      </View>
+        <Container>
+           <Header>
+
+           <Body>
+             <Title style={styles.headerTitle}>My Pantry</Title>
+             <Subtitle>Pantry Assistant</Subtitle>
+           </Body>
+           <Right style={{flex: 1}}>
+            <Button transparent>
+              <Icon name='settings' />
+            </Button>
+          </Right>
+         </Header>
+         
+           <View style={{ flex: .25}}>
+         <Fab
+            active={this.state.active}
+            direction="up"
+            containerStyle={{}}
+            style={styles.fabStyle}
+            text="Add Items to your pantry"
+            position="bottomRight"
+            onPress={() => {
+              this.setState({ active: !this.state.active }) 
+                alert('Add a new Item Here!')
+                }}>
+            <Icon name="add" />
+          </Fab>
+        
+          </View>
+          <Content>
+         <List style={styles.listMargin}
+            dataSource={this.ds.cloneWithRows(this.state.listViewData)}
+            renderRow={data =>
+              <ListItem>
+              <Badge info style={styles.badge}>
+            <Text>2</Text>
+            </Badge>
+                <Text> {data} </Text>
+              </ListItem>}
+              
+              renderRightHiddenRow ={data =>
+              <Button success onPress={() => alert(data)}>
+                <Icon active name="add" />
+              </Button>}
+
+              renderLeftHiddenRow={(data, secId, rowId, rowMap) =>
+              <Button full danger onPress={_ => this.deleteRow(secId, rowId, rowMap)}>
+                <Icon active name="trash" />
+              </Button>}
+            leftOpenValue={75}
+            rightOpenValue={-75}
+       
+          /> 
+        </Content>
+      </Container>
     )
   }
 }
+
+export default MainNav = TabNavigator({
+  Pantry: { screen: PantryScreen },
+  Inventory: { screen: InventoryScreen },
+  GroceryList: { screen: GroceryListScreen },
+  //MealPlan: { screen: MealPlanScreen },
+ }, {
+   tabBarPosition: 'bottom',
+   animationEnabled: true,
+   tabBarOptions: {
+     activeTintColor: Colors.oceanSpray,
+   },
+ 
+});
