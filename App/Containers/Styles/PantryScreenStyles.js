@@ -14,6 +14,7 @@ export default StyleSheet.create({
   headerTitle:{
      ...Fonts.base
   },
+  searchAndFabView:{ flexDirection:'row', marginTop: 30, marginBottom: 10, marginLeft: 20},
   badge: {
     marginLeft: Metrics.baseMargin,
     marginRight: Metrics.baseMargin
@@ -22,11 +23,26 @@ export default StyleSheet.create({
     marginLeft: Metrics.doubleBaseMargin
   },
   fabStyle:{
-    backgroundColor: Colors.oceanSpray,
-    alignSelf: 'center'
+    flex: .5, flexDirection: 'column', backgroundColor: Colors.oceanSpray, marginBottom: -20, height:45, width:45
   },
   fabConatinerStyle:{
     alignItems: 'center'
+  },
+  bargeButton:{
+    width: 25,
+    height: 25,
+    backgroundColor: Colors.oceanSpray,
+    alignItems: 'flex-start',
+    flexDirection: 'row'
+  },
+  itemCount:{
+    textAlign: 'center',
+    flexDirection: 'row',
+    lineHeight: Metrics.horizontalSmallLineHeight,
+    fontSize: Fonts.size.medium,
+    alignSelf: 'center',
+    marginLeft: -8
+
   }
 
 })

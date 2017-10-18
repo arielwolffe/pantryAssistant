@@ -15,6 +15,7 @@ const metrics = {
   doubleThreeSection: 150,
   doubleHalfSection: 70,
   horizontalLineHeight: 1,
+  horizontalSmallLineHeight: .25,
   searchBarHeight: 30,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,

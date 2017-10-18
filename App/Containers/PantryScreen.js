@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { ScrollView, Image, View, Form, Item, Input, Label , ListView } from 'react-native'
+import { ScrollView, Image, View, Form, Item, Input, Label , ListView, TouchableOpacity } from 'react-native'
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Subtitle, List, ListItem, Content, Text, Badge, Fab} from 'native-base';
-import { StackNavigator, TabNavigator} from 'react-navigation';
+import { StackNavigator, TabNavigator} from 'react-navigation'
+import { SearchBar } from 'react-native-elements'
 import { Images } from '../Themes'
 import styles from './Styles/PantryScreenStyles'
 import {Colors} from '../Themes/'
@@ -59,20 +60,19 @@ const datas = [
              <Title style={styles.headerTitle}>My Pantry</Title>
              <Subtitle>Pantry Assistant</Subtitle>
            </Body>
-           <Right style={{flex: 1}}>
+           {/* <Right style={{flex: 1}}>
             <Button transparent>
               <Icon name='settings' />
             </Button>
-          </Right>
+          </Right> */}
          </Header>
-         
-           <View style={{ flex: .25}}>
-         <Fab
+           <View style={styles.searchAndFabView}>
+         <Fab small
             active={this.state.active}
             direction="up"
             containerStyle={{}}
             style={styles.fabStyle}
-            text="Add Items to your pantry"
+            text="Add Items to your pantry..."
             position="bottomRight"
             onPress={() => {
               this.setState({ active: !this.state.active }) 
@@ -80,17 +80,26 @@ const datas = [
                 }}>
             <Icon name="add" />
           </Fab>
-        
+          <SearchBar
+            lightTheme
+            //onChangeText={someMethod}
+            placeholder='Search Items in your pantry...' />
           </View>
+          
           <Content>
          <List style={styles.listMargin}
             dataSource={this.ds.cloneWithRows(this.state.listViewData)}
             renderRow={data =>
               <ListItem>
-              <Badge info style={styles.badge}>
+              <Button style={styles.bargeButton}>
+                <Text style={styles.itemCount}>2</Text>
+                </Button>
+          
+              {/* <Badge info style={styles.badge}>
             <Text>2</Text>
-            </Badge>
+            </Badge> */}
                 <Text> {data} </Text>
+                              
               </ListItem>}
               
               renderRightHiddenRow ={data =>
@@ -105,7 +114,8 @@ const datas = [
             leftOpenValue={75}
             rightOpenValue={-75}
        
-          /> 
+          />
+         
         </Content>
       </Container>
     )
