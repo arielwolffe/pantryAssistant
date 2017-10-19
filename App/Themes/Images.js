@@ -25,7 +25,9 @@ const images = {
   pantryIcon: require('../Images/pantry-icon.png'),
   inventoryIcon: require('../Images/inventory-icon.png'),
   groceryListIcon: require('../Images/grocerylist-icon.png'),
-  mealPlanIcon: require('../Images/mealplan-icon.png')
+  mealPlanIcon: require('../Images/mealplan-icon.png'),
+  addToPantryIcon: require('../Images/addToPantryIcon.png'),
+  addToListIcon: require('../Images/addToList.png')
 }
 
 export default images

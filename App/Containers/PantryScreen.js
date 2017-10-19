@@ -80,10 +80,10 @@ const datas = [
                 }}>
             <Icon name="add" />
           </Fab>
-          <SearchBar
+          <SearchBar round
             lightTheme
             //onChangeText={someMethod}
-            placeholder='Search Items in your pantry...' />
+            placeholder='Search current pantry items...' />
           </View>
           
           <Content>
@@ -94,10 +94,7 @@ const datas = [
               <Button style={styles.bargeButton}>
                 <Text style={styles.itemCount}>2</Text>
                 </Button>
-          
-              {/* <Badge info style={styles.badge}>
-            <Text>2</Text>
-            </Badge> */}
+
                 <Text> {data} </Text>
                               
               </ListItem>}

@@ -7,9 +7,7 @@ export default StyleSheet.create({
     paddingBottom: Metrics.baseMargin
   },
 
-  centered: {
-    alignItems: 'center'
-  },
+  
 
   headerTitle:{
      ...Fonts.base
@@ -33,10 +31,10 @@ export default StyleSheet.create({
     height: 25,
     backgroundColor: Colors.oceanSpray,
     alignItems: 'flex-start',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginLeft: 10
   },
   itemCount:{
-    textAlign: 'center',
     flexDirection: 'row',
     lineHeight: Metrics.horizontalSmallLineHeight,
     fontSize: Fonts.size.medium,

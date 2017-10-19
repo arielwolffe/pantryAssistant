@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ScrollView, Image, View, Form, Item, Input, Label, ListView  } from 'react-native'
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Subtitle, List, ListItem, Content, Text, Badge, Fab, Switch} from 'native-base';
 import { StackNavigator } from 'react-navigation';
+import { SearchBar } from 'react-native-elements'
 import { Images } from '../Themes'
 import styles from './Styles/PantryScreenStyles'
 
@@ -54,20 +55,24 @@ static navigationOptions = {
              <Subtitle>Pantry Assistant</Subtitle>
            </Body>
          </Header>
-         <View style={{ flex: .25}}>
-         <Fab
+         <View style={styles.searchAndFabView}>
+         <Fab small
             active={this.state.active}
             direction="up"
             containerStyle={{}}
             style={styles.fabStyle}
+            text="Add Items to your pantry..."
             position="bottomRight"
             onPress={() => {
               this.setState({ active: !this.state.active }) 
-                alert('Search Here!')
+                alert('Add a new Item Here!')
                 }}>
-            <Icon name="search" />
+            <Icon name="add" />
           </Fab>
-        
+          <SearchBar round
+            lightTheme
+            //onChangeText={someMethod}
+            placeholder='Search your inventory items...' />
           </View>
           <Content>
           <List style={styles.listMargin}
@@ -94,11 +99,15 @@ static navigationOptions = {
             <View style={{flex:1, flexDirection:'row'}}>
              
               <Button success onPress={() => alert(data)} style={{flex:1, flexDirection:'row'}}>
-              <Icon active name="add" />
+                <Image
+                  source={Images.addToPantryIcon}
+                />
               </Button>
 
               <Button warning onPress={() => alert(data)} style={{flex:1, flexDirection:'row'}}>
-              <Icon active name="share" />
+              <Image
+                  source={Images.addToListIcon}
+                />
               </Button>
 
              
