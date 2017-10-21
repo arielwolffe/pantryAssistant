@@ -109,49 +109,52 @@ const datas = [
          //onChangeText={someMethod}
          placeholder='Search your inventory items...' />
        </View>
+
+       
        <Content>
-       <List style={styles.listMargin}
-         dataSource={this.ds.cloneWithRows(this.state.listViewData)}
-         renderRow={data =>
-         <TouchableHighlight
-         onPress={()=> this.setState({toggle: !this.state.toggle})}>
-         {/* style={styles.button}> */}
-     
-           <ListItem icon style={[styles.listLineItem, this.state.toggle && styles.listLineItemStrike]}>
-             <Left>
-             <Button style={styles.bargeButton}>
-              <Text style={styles.itemCount}>{data.itemCount}</Text>
+
+          <List style={styles.listMargin}
+            dataSource={this.ds.cloneWithRows(this.state.listViewData)}
+            renderRow={data =>
+            <TouchableHighlight
+            onPress={()=> this.setState({toggle: !this.state.toggle})}>
+            {/* style={styles.button}> */}
+        
+              <ListItem icon style={[styles.listLineItem, this.state.toggle && styles.listLineItemStrike]}>
+                <Left>
+                <Button style={styles.bargeButton}>
+                  <Text style={styles.itemCount}>{data.itemCount}</Text>
+                  </Button>
+                </Left>
+                <Body>
+                  <Text> {data.itemName} </Text>
+                </Body>
+                <Right>
+                <Text> {data.itemPackage}</Text>
+              </Right>
+              </ListItem>
+              </TouchableHighlight>}
+
+            renderRightHiddenRow={(data, secId, rowId, rowMap) =>
+              <Button full danger onPress={_ => this.deleteRow(secId, rowId, rowMap)}style={{flex:1, flexDirection:'row'}}>
+                <Icon active name="trash" />
               </Button>
-             </Left>
-             <Body>
-               <Text> {data.itemName} </Text>
-             </Body>
-             <Right>
-             <Text> {data.itemPackage}</Text>
-           </Right>
-           </ListItem>
-           </TouchableHighlight>}
+              }
 
-         renderRightHiddenRow={(data, secId, rowId, rowMap) =>
-           <Button full danger onPress={_ => this.deleteRow(secId, rowId, rowMap)}style={{flex:1, flexDirection:'row'}}>
-            <Icon active name="trash" />
-           </Button>
-          }
+            renderLeftHiddenRow={(data, secId, rowId, rowMap) =>
+            <View style={{flex:1, flexDirection:'row', marginRight: 10}}>
+                <Button success onPress={_ => this.addItemCount(secId, rowId, rowMap, data)} style={{flex:1, flexDirection:'row'}}>
+                  <Icon active name="add" />
+                </Button>
 
-         renderLeftHiddenRow={(data, secId, rowId, rowMap) =>
-         <View style={{flex:1, flexDirection:'row', marginRight: 10}}>
-            <Button success onPress={_ => this.addItemCount(secId, rowId, rowMap, data)} style={{flex:1, flexDirection:'row'}}>
-              <Icon active name="add" />
-            </Button>
-
-            <Button primary onPress={_ => this.minusItemCount(secId, rowId, rowMap, data)} style={{flex:1, flexDirection:'row'}}>
-            <Icon active name="remove" />
-            </Button>
-          </View>
-          }
-         leftOpenValue={120}
-         rightOpenValue={-75}
-       />
+                <Button primary onPress={_ => this.minusItemCount(secId, rowId, rowMap, data)} style={{flex:1, flexDirection:'row'}}>
+                <Icon active name="remove" />
+                </Button>
+              </View>
+              }
+            leftOpenValue={120}
+            rightOpenValue={-75}
+          />
      </Content>
    </Container>
     )
