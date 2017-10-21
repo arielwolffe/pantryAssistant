@@ -7,14 +7,12 @@ import { Images } from '../Themes'
 import styles from './Styles/PantryScreenStyles'
 
 const datasInventory = [
-  'Crix',
-  'Cheese',
-  'Bread',
-  'Butter',
-  'Milk',
-  'Bottles water',
-  'Sausages',
-  'Dog Chow',
+  {itemName: 'Crix', itemCount: 3, itemPackage: 'Pack', itemPrice: '$23.99'},
+  {itemName: 'Cheese', itemCount: 1, itemPackage: 'Single', itemPrice: '$20.00'},
+  {itemName: 'Bread', itemCount: 2, itemPackage: 'Single', itemPrice: '$25.00'},
+  {itemName: 'Butter', itemCount: 1, itemPackage: 'Single', itemPrice: '$7.99'},
+  {itemName: 'Milk', itemCount: 1, itemPackage: 'Single', itemPrice: '$17.99'},
+  {itemName: 'Bottled Water ', itemCount: 1, itemPackage: 'Case', itemPrice: '$24.00'}
 ];
 
 export default class GroceryListScreen extends Component {
@@ -86,32 +84,35 @@ export default class GroceryListScreen extends Component {
              <ListItem icon>
                <Left>
                <Button style={styles.bargeButton}>
-                <Text style={styles.itemCount}>2</Text>
+                <Text style={styles.itemCount}>{data.itemCount}</Text>
                 </Button>
                </Left>
                <Body>
-                 <Text> {data} </Text>
+                 <Text> {data.itemName}</Text>
                </Body>
                <Right>
-               <Text> $15.99 </Text>
+               <Text>{data.itemPackage}-{data.itemPrice} </Text>
              </Right>
              </ListItem>}
 
-           renderLeftHiddenRow={(data, secId, rowId, rowMap) =>
+           renderRightHiddenRow={(data, secId, rowId, rowMap) =>
              <Button full danger onPress={_ => this.deleteRow(secId, rowId, rowMap)}style={{flex:1, flexDirection:'row'}}>
              <Icon active name="trash" />
            </Button>}
 
-           renderRightHiddenRow={data =>
-           <View style={{flex:1, flexDirection:'row'}}>
+           renderLeftHiddenRow={data =>
+           <View style={{flex:1, flexDirection:'row', marginRight: 10}}>
+            <Button success onPress={() => alert(data)} style={{flex:1, flexDirection:'row'}}>
+              <Icon active name="add" />
+            </Button>
 
-
-            
-             </View>
+            <Button primary onPress={() => alert(data)} style={{flex:1, flexDirection:'row'}}>
+            <Icon active name="remove" />
+            </Button>
+          </View>
               }
-           leftOpenValue={75}
-           rightOpenValue={-155}
-           disableLeftSwipe={true}
+           leftOpenValue={120}
+           rightOpenValue={-75}
          />
        </Content>
      </Container>

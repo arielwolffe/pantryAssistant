@@ -91,30 +91,22 @@ static navigationOptions = {
               </ListItem>}
 
             renderLeftHiddenRow={(data, secId, rowId, rowMap) =>
-              <Button full danger onPress={_ => this.deleteRow(secId, rowId, rowMap)}style={{flex:1, flexDirection:'row'}}>
-              <Icon active name="trash" />
-            </Button>}
-
-            renderRightHiddenRow={data =>
-            <View style={{flex:1, flexDirection:'row'}}>
-             
-              <Button success onPress={() => alert(data)} style={{flex:1, flexDirection:'row'}}>
+               <Button success onPress={() => alert(data)} style={{flex:1, flexDirection:'row', marginRight: 10}}>
                 <Image
                   source={Images.addToPantryIcon}
                 />
               </Button>
+          }
 
+            renderRightHiddenRow={data =>
               <Button warning onPress={() => alert(data)} style={{flex:1, flexDirection:'row'}}>
               <Image
                   source={Images.addToListIcon}
                 />
               </Button>
-
-             
-              </View>
                }
             leftOpenValue={75}
-            rightOpenValue={-155}
+            rightOpenValue={-75}
           />
         </Content>
       </Container>
